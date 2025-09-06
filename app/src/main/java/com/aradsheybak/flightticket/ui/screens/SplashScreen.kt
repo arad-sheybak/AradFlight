@@ -4,12 +4,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -50,11 +53,16 @@ private fun SplashUi() {
             ),
         contentAlignment = Alignment.Center
     ) {
-
+        Image(
+            painter = painterResource(id = R.drawable.ic_airplane),
+            contentDescription = "airplane in splash",
+            modifier = Modifier
+                .fillMaxWidth()
+        )
         Image(
             painter = painterResource(id = R.drawable.ic_logo),
             contentDescription = "logo in splash",
-            modifier = Modifier.requiredSize(150.dp),
+            modifier = Modifier.requiredSize(250.dp),
             contentScale = ContentScale.Fit
 
         )

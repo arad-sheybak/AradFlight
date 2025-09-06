@@ -13,9 +13,27 @@ fun OnboardingScreen(onFinish: () -> Unit) {
 
     Crossfade(targetState = currentPage) { page ->
         when (page) {
-            0 -> OnboardingPage1 { currentPage++ }
-            1 -> OnboardingPage2 { currentPage++ }
-            2 -> OnboardingPage3 { onFinish() }
+            0 -> OnboardingPage1(
+                onNext = { currentPage++ },
+                onBack = {/* do nothing, because we are on the first page */ },
+                onFinish = {
+                    onFinish()
+                }
+            )
+
+
+            1 -> OnboardingPage2(
+                onNext = { currentPage++ },
+                onBack = { currentPage-- },
+                onFinish = {
+                    onFinish()
+                }
+            )
+
+            2 -> OnboardingPage3(
+                onNext = { onFinish() },
+                onBack = { currentPage-- },
+            )
         }
     }
 }

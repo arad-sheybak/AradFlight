@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AradFlight</string>
+    <string name="skip">Skip</string>
+    <string name="onboarding1_title">Buy Flight Ticket</string>
+    <string name="onboarding1_desc">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus.</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="finish">Finish</string>
 </resources>
