@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aradsheybak.flightticket.R
+import com.aradsheybak.flightticket.ui.components.gradientBackground
 
 @Composable
 fun OnboardingPage2(
@@ -55,12 +56,7 @@ private fun Ui(
         modifier = Modifier
             .fillMaxSize()
             .background(
-                Brush.verticalGradient(
-                    listOf(
-                        colorResource(R.color.base_color_purple),
-                        colorResource(R.color.base_color_purple_dark)
-                    )
-                )
+                gradientBackground()
             )
     ) {
         Text(

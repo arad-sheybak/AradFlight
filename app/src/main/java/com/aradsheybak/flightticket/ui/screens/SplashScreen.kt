@@ -10,9 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -47,7 +45,7 @@ private fun SplashUi() {
                 Brush.verticalGradient(
                     listOf(
                         colorResource(R.color.base_color_purple),
-                        colorResource(R.color.base_color_purple_dark)
+                        colorResource(R.color.base_color_dark)
                     )
                 )
             ),

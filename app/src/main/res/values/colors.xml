@@ -8,6 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="base_color_purple">#2C1C4B</color>
-    <color name="base_color_purple_dark">#1E1E20</color>
+    <color name="base_color_dark">#1E1E20</color>
+    <color name="purple_light">#B379DF</color>
+    <color name="placeholder_color">#D0CECE</color>
+    <color name="stroke_purple">#290276</color>
+    <color name="stroke_gray">#858484</color>
+
 
 </resources>
