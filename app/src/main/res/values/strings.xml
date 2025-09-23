@@ -21,5 +21,7 @@
     <string name="last_name_placeholder">Enter Your Last Name</string>
     <string name="confirm_password_placeholder">Enter Your Password Again</string>
     <string name="signup">Signup</string>
+    <string name="date_in_home">Tuesday, 23 Sep 2025</string>
+    <string name="location_home">Gorgan, Iran</string>
 
 </resources>
