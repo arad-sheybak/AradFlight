@@ -163,7 +163,9 @@ private fun Ui(navController: NavHostController) {
                 backgroundColor = colorResource(R.color.base_color_purple),
                 borderColor = colorResource(R.color.stroke_purple),
                 borderWidth = 1.dp,
-                onClick = {},
+                onClick = {
+                    navController.navigate(Screen.Main.route)
+                },
                 modifier = Modifier
                     .width(230.dp)
                     .height(48.dp)

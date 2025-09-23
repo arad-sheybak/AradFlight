@@ -8,3 +8,8 @@ import androidx.compose.ui.tooling.preview.Preview
 fun HomeScreen(){
 
 }
+@Composable
+@Preview
+private fun Ui(){
+
+}

@@ -28,8 +28,8 @@ fun AppNavHost(navController: NavHostController) {
             )
         }
 
-        composable(Screen.Home.route) {
-            HomeScreen()
+        composable(Screen.Main.route) {
+            MainScreen()
         }
 
 
