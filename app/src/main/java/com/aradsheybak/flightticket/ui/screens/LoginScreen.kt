@@ -1,6 +1,5 @@
 package com.aradsheybak.flightticket.ui.screens
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,31 +21,29 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavHostController
 import com.aradsheybak.flightticket.R
 import com.aradsheybak.flightticket.ui.components.BaseButton
 import com.aradsheybak.flightticket.ui.components.BaseTextField
 import com.aradsheybak.flightticket.ui.components.gradientBackground
+import com.aradsheybak.flightticket.ui.navigation.Screen
 
 @Composable
-fun LoginScreen() {
-    Ui()
+fun LoginScreen(navController: NavHostController) {
+    Ui(navController)
 }
 
-@Preview
 @Composable
-
-private fun Ui() {
+private fun Ui(navController: NavHostController) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -107,7 +104,6 @@ private fun Ui() {
                 usernameInput,
                 passwordInput,
                 loginBtn,
-                or,
                 createAccount) = createRefs()
 
             Text(
@@ -177,14 +173,15 @@ private fun Ui() {
                         end.linkTo(parent.end)
                     })
 
-
             Text(
                 text = stringResource(R.string.create_new_account),
                 color = colorResource(R.color.white),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.W300,
                 modifier = Modifier
-                    .clickable {}
+                    .clickable {
+                        navController.navigate(Screen.Signup.route)
+                    }
                     .constrainAs(createAccount) {
                         top.linkTo(loginBtn.bottom, margin = 28.dp)
                         start.linkTo(loginBtn.start)
