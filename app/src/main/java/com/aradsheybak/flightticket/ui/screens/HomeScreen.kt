@@ -2,7 +2,6 @@ package com.aradsheybak.flightticket.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,13 +16,22 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -34,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.aradsheybak.flightticket.R
+import com.aradsheybak.flightticket.ui.components.BaseButton
 import com.aradsheybak.flightticket.ui.components.gradientBackground
 
 @Composable
@@ -45,6 +54,9 @@ fun HomeScreen() {
 @Preview
 private fun Ui() {
     val scrollState = rememberScrollState()
+    var from by remember { mutableStateOf("") }
+    var to by remember { mutableStateOf("") }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -63,7 +75,10 @@ private fun Ui() {
                     imgBadgeNotification,
                     txtDate,
                     txtLocation,
-                    boxTickerOptions) = createRefs()
+                    boxFrom,
+                    boxTo,
+                    imgSwitch,
+                    searchBtn) = createRefs()
 
                 Image(
                     painter = painterResource(R.drawable.bg_airplane_home),
@@ -132,14 +147,15 @@ private fun Ui() {
                         end.linkTo(parent.end)
                     })
 
-                Row(horizontalArrangement = Arrangement.Center,
+                Row(
+                    horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                    .constrainAs(txtLocation) {
-                    top.linkTo(txtDate.bottom, margin = 8.dp)
-                    start.linkTo(txtDate.start)
-                    end.linkTo(txtDate.end)
-                }) {
+                        .constrainAs(txtLocation) {
+                            top.linkTo(txtDate.bottom, margin = 8.dp)
+                            start.linkTo(txtDate.start)
+                            end.linkTo(txtDate.end)
+                        }) {
                     Image(
                         painter = painterResource(R.drawable.ic_location_home),
                         contentDescription = null,
@@ -154,9 +170,128 @@ private fun Ui() {
                     )
                 }
 
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .height(60.dp)
+                        .background(
+                            color = Color.Black.copy(alpha = 0.5f),
+                            shape = RoundedCornerShape(
+                                topEnd = 16.dp,
+                                topStart = 16.dp
+                            )
+                        )
+                        .constrainAs(boxFrom) {
+                            top.linkTo(imgBg.bottom)
+                            bottom.linkTo(imgBg.bottom)
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
+                        }
+                ) {
+                    TextField(
+                        value = from,
+                        onValueChange = { from = it },
+                        label = { Text("From") },
+                        placeholder = { Text("Gorgan, Iran") },
+                        singleLine = true,
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White,
+                            cursorColor = Color.White,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent,
+                            errorIndicatorColor = Color.Transparent
+                        ),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                color = Color.Transparent,
+                                shape = RoundedCornerShape(topEnd = 16.dp, topStart = 16.dp)
+                            )
+                    )
+                }
 
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .height(60.dp)
+                        .background(
+                            color = Color.Black.copy(alpha = 0.5f),
+                            shape = RoundedCornerShape(
+                                bottomEnd = 16.dp,
+                                bottomStart = 16.dp
+                            )
+                        )
+                        .constrainAs(boxTo) {
+                            top.linkTo(boxFrom.bottom, margin = 8.dp)
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
+                        }
+                ) {
+                    TextField(
+                        value = to,
+                        onValueChange = { to = it },
+                        label = { Text("To") },
+                        placeholder = { Text("Gorgan, Iran") },
+                        singleLine = true,
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White,
+                            cursorColor = Color.White,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent,
+                            errorIndicatorColor = Color.Transparent
+                        ),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                color = Color.Transparent,
+                                shape = RoundedCornerShape(topEnd = 16.dp, topStart = 16.dp)
+                            )
+                    )
+                }
 
+                Image(
+                    painter = painterResource(R.drawable.ic_switch_from_to),
+                    contentDescription = null,
+                    contentScale = ContentScale.Inside,
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .clickable {
+                        }
+                        .rotate(90f)
+                        .background(colorResource(R.color.placeholder_color))
+                        .constrainAs(imgSwitch) {
+                            top.linkTo(boxFrom.bottom)
+                            bottom.linkTo(boxTo.top)
+                            end.linkTo(boxFrom.end)
+                            start.linkTo(boxFrom.end)
 
+                        }
+                )
+
+                BaseButton(
+                    text = "Search",
+                    fontSize = 20.sp,
+                    onClick = {},
+                    backgroundColor = colorResource(R.color.base_color_purple),
+                    borderWidth = 1.dp,
+                    borderColor = colorResource(R.color.stroke_purple),
+                    modifier = Modifier
+                        .width(230.dp)
+                        .constrainAs(searchBtn) {
+                            top.linkTo(boxTo.bottom, margin = 16.dp)
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
+                        }
+                )
             }
         }
     }
