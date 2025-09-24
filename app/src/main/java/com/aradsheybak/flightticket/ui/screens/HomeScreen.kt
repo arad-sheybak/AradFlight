@@ -37,6 +37,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -78,6 +79,7 @@ private fun Ui() {
                     boxFrom,
                     boxTo,
                     imgSwitch,
+                    rowBoxDetails,
                     searchBtn) = createRefs()
 
                 Image(
@@ -277,17 +279,128 @@ private fun Ui() {
                         }
                 )
 
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .height(80.dp)
+                        .constrainAs(rowBoxDetails) {
+                            top.linkTo(boxTo.bottom, margin = 16.dp)
+                            start.linkTo(boxTo.start)
+                            end.linkTo(boxTo.end)
+                        }) {
+                    Box(
+                        modifier = Modifier
+                            .background(
+                                color = Color.Black.copy(alpha = 0.5f),
+                                shape = RoundedCornerShape(
+                                    topStart = 16.dp,
+                                    bottomStart = 16.dp
+                                )
+                            )
+                            .weight(1f)
+                            .height(80.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(horizontal = 8.dp, vertical = 8.dp),
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Departure",
+                                fontSize = 12.sp,
+                                color = colorResource(R.color.placeholder_color)
+                            )
+
+                            Text(
+                                text = "Wen,Sep 24",
+                                color = colorResource(R.color.white),
+                                fontSize = 16.sp,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.padding(vertical = 8.dp)
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(
+                                color = Color.Black.copy(alpha = 0.5f),
+                            )
+                            .weight(1f)
+                            .height(80.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(horizontal = 8.dp, vertical = 8.dp),
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "class",
+                                fontSize = 12.sp,
+                                color = colorResource(R.color.placeholder_color)
+                            )
+
+                            Text(
+                                text = "Business",
+                                color = colorResource(R.color.white),
+                                fontSize = 16.sp,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.padding(vertical = 8.dp)
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(
+                                color = Color.Black.copy(alpha = 0.5f),
+                                shape = RoundedCornerShape(
+                                    topEnd = 16.dp,
+                                    bottomEnd = 16.dp
+                                )
+                            )
+                            .weight(1f)
+                            .height(80.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(horizontal = 8.dp, vertical = 8.dp),
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Passengers",
+                                fontSize = 12.sp,
+                                color = colorResource(R.color.placeholder_color)
+                            )
+
+                            Text(
+                                text = "2 Adults",
+                                color = colorResource(R.color.white),
+                                fontSize = 16.sp,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.padding(vertical = 8.dp)
+                            )
+                        }
+                    }
+
+                }
+
+
                 BaseButton(
                     text = "Search",
                     fontSize = 20.sp,
                     onClick = {},
-                    backgroundColor = colorResource(R.color.base_color_purple),
+                    backgroundColor = colorResource(R.color.blue_light),
                     borderWidth = 1.dp,
                     borderColor = colorResource(R.color.stroke_purple),
                     modifier = Modifier
-                        .width(230.dp)
+                        .fillMaxWidth(0.8f)
+                        .height(48.dp)
                         .constrainAs(searchBtn) {
-                            top.linkTo(boxTo.bottom, margin = 16.dp)
+                            top.linkTo(rowBoxDetails.bottom, margin = 16.dp)
                             start.linkTo(parent.start)
                             end.linkTo(parent.end)
                         }

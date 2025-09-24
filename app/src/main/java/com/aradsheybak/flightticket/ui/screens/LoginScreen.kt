@@ -160,18 +160,18 @@ private fun Ui(navController: NavHostController) {
             BaseButton(
                 text = "Login",
                 fontSize = 20.sp,
-                backgroundColor = colorResource(R.color.base_color_purple),
+                backgroundColor = colorResource(R.color.blue_light),
                 borderColor = colorResource(R.color.stroke_purple),
                 borderWidth = 1.dp,
                 onClick = {
                     navController.navigate(Screen.Main.route)
                 },
                 modifier = Modifier
-                    .width(230.dp)
+                    .fillMaxWidth(0.9f)
                     .height(48.dp)
                     .constrainAs(loginBtn) {
                         top.linkTo(passwordInput.bottom, margin = 24.dp)
-                        start.linkTo(passwordTitle.start)
+                        start.linkTo(parent.start)
                         end.linkTo(parent.end)
                     })
 
