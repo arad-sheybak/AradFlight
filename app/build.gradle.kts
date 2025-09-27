@@ -88,4 +88,8 @@ dependencies {
     //constraintlayout
     implementation(libs.androidx.constraintlayout.compose)
 
+    //Moshi
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+
 }

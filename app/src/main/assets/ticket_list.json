@@ -1,0 +1,88 @@
+{
+  "tickets": [
+    {
+      "airline": "Austrian Airlines",
+      "price": 200.00,
+      "currency": "USD",
+      "departure": {
+        "airportCode": "OSL",
+        "city": "Oslo",
+        "country": "Norway",
+        "time": "12:20 AM"
+      },
+      "arrival": {
+        "airportCode": "VIE",
+        "city": "Vienna",
+        "country": "Austria",
+        "time": "4:00 AM"
+      },
+      "flight": {
+        "duration": "3h 40m",
+        "isDirect": true
+      }
+    },
+    {
+      "airline": "Lufthansa",
+      "price": 350.00,
+      "currency": "USD",
+      "departure": {
+        "airportCode": "FRA",
+        "city": "Frankfurt",
+        "country": "Germany",
+        "time": "9:45 AM"
+      },
+      "arrival": {
+        "airportCode": "JFK",
+        "city": "New York",
+        "country": "USA",
+        "time": "12:15 PM"
+      },
+      "flight": {
+        "duration": "8h 30m",
+        "isDirect": true
+      }
+    },
+    {
+      "airline": "Turkish Airlines",
+      "price": 280.00,
+      "currency": "USD",
+      "departure": {
+        "airportCode": "IST",
+        "city": "Istanbul",
+        "country": "Turkey",
+        "time": "6:30 PM"
+      },
+      "arrival": {
+        "airportCode": "DXB",
+        "city": "Dubai",
+        "country": "UAE",
+        "time": "11:55 PM"
+      },
+      "flight": {
+        "duration": "4h 25m",
+        "isDirect": true
+      }
+    },
+    {
+      "airline": "Qatar Airways",
+      "price": 450.00,
+      "currency": "USD",
+      "departure": {
+        "airportCode": "DOH",
+        "city": "Doha",
+        "country": "Qatar",
+        "time": "2:00 AM"
+      },
+      "arrival": {
+        "airportCode": "SYD",
+        "city": "Sydney",
+        "country": "Australia",
+        "time": "11:30 PM"
+      },
+      "flight": {
+        "duration": "16h 30m",
+        "isDirect": false
+      }
+    }
+  ]
+}

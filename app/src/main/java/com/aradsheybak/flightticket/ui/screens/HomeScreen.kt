@@ -80,7 +80,8 @@ private fun Ui() {
                     boxTo,
                     imgSwitch,
                     rowBoxDetails,
-                    searchBtn) = createRefs()
+                    searchBtn,
+                    txtMyTicket) = createRefs()
 
                 Image(
                     painter = painterResource(R.drawable.bg_airplane_home),
@@ -258,7 +259,6 @@ private fun Ui() {
                             )
                     )
                 }
-
                 Image(
                     painter = painterResource(R.drawable.ic_switch_from_to),
                     contentDescription = null,
@@ -278,7 +278,6 @@ private fun Ui() {
 
                         }
                 )
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
@@ -311,7 +310,6 @@ private fun Ui() {
                                 fontSize = 12.sp,
                                 color = colorResource(R.color.placeholder_color)
                             )
-
                             Text(
                                 text = "Wen,Sep 24",
                                 color = colorResource(R.color.white),
@@ -341,7 +339,6 @@ private fun Ui() {
                                 fontSize = 12.sp,
                                 color = colorResource(R.color.placeholder_color)
                             )
-
                             Text(
                                 text = "Business",
                                 color = colorResource(R.color.white),
@@ -375,7 +372,6 @@ private fun Ui() {
                                 fontSize = 12.sp,
                                 color = colorResource(R.color.placeholder_color)
                             )
-
                             Text(
                                 text = "2 Adults",
                                 color = colorResource(R.color.white),
@@ -387,7 +383,6 @@ private fun Ui() {
                     }
 
                 }
-
 
                 BaseButton(
                     text = "Search",
@@ -405,7 +400,22 @@ private fun Ui() {
                             end.linkTo(parent.end)
                         }
                 )
+
+                Text(text="My Tickets",
+                    color=colorResource(R.color.white),
+                    fontSize = 20.sp,
+                    modifier = Modifier
+                        .constrainAs(txtMyTicket){
+                            top.linkTo(searchBtn.bottom, margin = 16.dp)
+                            start.linkTo(parent.start, margin = 16.dp)
+                        }
+                    )
+
+
+
             }
+
+
         }
     }
 }
