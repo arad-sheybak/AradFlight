@@ -48,7 +48,6 @@ android {
 }
 
 dependencies {
-
     // Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -58,6 +57,7 @@ dependencies {
     implementation(libs.ui)
     implementation(libs.material3)
     implementation(libs.ui.tooling.preview)
+    implementation(libs.androidx.foundation)
     debugImplementation(libs.ui.tooling)
 
     // Lifecycle (viewModelScope, etc)
@@ -91,5 +91,8 @@ dependencies {
     //Moshi
     implementation(libs.moshi)
     implementation(libs.moshi.kotlin)
+
+    //viewModel
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
 }

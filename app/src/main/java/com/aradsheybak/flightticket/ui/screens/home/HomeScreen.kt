@@ -1,4 +1,4 @@
-package com.aradsheybak.flightticket.ui.screens
+package com.aradsheybak.flightticket.ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,25 +41,26 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.aradsheybak.flightticket.R
 import com.aradsheybak.flightticket.ui.components.BaseButton
+import com.aradsheybak.flightticket.ui.components.TicketItem
 import com.aradsheybak.flightticket.ui.components.gradientBackground
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeScreen() {
-    Ui()
+fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
+    Ui(viewModel)
 }
 
 @Composable
-@Preview
-private fun Ui() {
+private fun Ui(viewModel: HomeViewModel = koinViewModel()) {
     val scrollState = rememberScrollState()
     var from by remember { mutableStateOf("") }
     var to by remember { mutableStateOf("") }
+    val tickets by viewModel.tickets.collectAsState()
 
     Box(
         modifier = Modifier
@@ -81,7 +85,8 @@ private fun Ui() {
                     imgSwitch,
                     rowBoxDetails,
                     searchBtn,
-                    txtMyTicket) = createRefs()
+                    txtMyTicket,
+                    lzyRowMyTickets) = createRefs()
 
                 Image(
                     painter = painterResource(R.drawable.bg_airplane_home),
@@ -175,7 +180,7 @@ private fun Ui() {
 
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.8f)
+                        .fillMaxWidth(0.85f)
                         .height(60.dp)
                         .background(
                             color = Color.Black.copy(alpha = 0.5f),
@@ -219,7 +224,7 @@ private fun Ui() {
 
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.8f)
+                        .fillMaxWidth(0.85f)
                         .height(60.dp)
                         .background(
                             color = Color.Black.copy(alpha = 0.5f),
@@ -280,7 +285,7 @@ private fun Ui() {
                 )
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth(0.8f)
+                        .fillMaxWidth(0.85f)
                         .height(80.dp)
                         .constrainAs(rowBoxDetails) {
                             top.linkTo(boxTo.bottom, margin = 16.dp)
@@ -392,7 +397,7 @@ private fun Ui() {
                     borderWidth = 1.dp,
                     borderColor = colorResource(R.color.stroke_purple),
                     modifier = Modifier
-                        .fillMaxWidth(0.8f)
+                        .fillMaxWidth(0.85f)
                         .height(48.dp)
                         .constrainAs(searchBtn) {
                             top.linkTo(rowBoxDetails.bottom, margin = 16.dp)
@@ -401,21 +406,31 @@ private fun Ui() {
                         }
                 )
 
-                Text(text="My Tickets",
-                    color=colorResource(R.color.white),
+                Text(
+                    text = "My Tickets",
+                    color = colorResource(R.color.white),
                     fontSize = 20.sp,
                     modifier = Modifier
-                        .constrainAs(txtMyTicket){
+                        .constrainAs(txtMyTicket) {
                             top.linkTo(searchBtn.bottom, margin = 16.dp)
                             start.linkTo(parent.start, margin = 16.dp)
                         }
-                    )
+                )
 
-
-
+                LazyRow(
+                    modifier = Modifier
+                        .padding(bottom = 16.dp)
+                        .constrainAs(lzyRowMyTickets) {
+                            top.linkTo(txtMyTicket.bottom, margin = 8.dp)
+                            start.linkTo(txtMyTicket.start)
+                            end.linkTo(parent.end, margin = 16.dp)
+                        }
+                ) {
+                    items(tickets) { ticket ->
+                        TicketItem(ticket = ticket)
+                    }
+                }
             }
-
-
         }
     }
 }

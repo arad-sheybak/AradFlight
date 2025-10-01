@@ -7,9 +7,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.aradsheybak.flightticket.ui.screens.HomeScreen
+import com.aradsheybak.flightticket.ui.screens.home.HomeScreen
 import com.aradsheybak.flightticket.ui.screens.ProfileScreen
 import com.aradsheybak.flightticket.ui.screens.SearchScreen
+import com.aradsheybak.flightticket.ui.screens.home.HomeViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainScreen() {
@@ -23,7 +25,11 @@ fun MainScreen() {
             startDestination = BottomNavItem.Home.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(BottomNavItem.Home.route) { HomeScreen() }
+            composable(BottomNavItem.Home.route) {
+                val viewModel: HomeViewModel = koinViewModel()
+
+                HomeScreen()
+            }
             composable(BottomNavItem.Search.route) { SearchScreen() }
             composable(BottomNavItem.Profile.route) { ProfileScreen() }
         }

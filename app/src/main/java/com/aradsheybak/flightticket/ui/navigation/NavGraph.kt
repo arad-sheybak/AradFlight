@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.aradsheybak.flightticket.ui.screens.HomeScreen
 import com.aradsheybak.flightticket.ui.screens.LoginScreen
 import com.aradsheybak.flightticket.ui.screens.SignupScreen
 import com.aradsheybak.flightticket.ui.screens.onboardingPages.OnboardingScreen

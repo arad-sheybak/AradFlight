@@ -4,6 +4,7 @@ import com.aradsheybak.flightticket.data.repository.TicketRepositoryImpl
 import com.aradsheybak.flightticket.data.source.local.TicketLocalDataSource
 import com.aradsheybak.flightticket.domain.repository.TicketRepository
 import com.aradsheybak.flightticket.domain.usecase.GetTicketsUseCase
+import com.aradsheybak.flightticket.ui.screens.home.HomeViewModel
 import com.squareup.moshi.Moshi
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
@@ -23,5 +24,5 @@ val appModule = module {
     factory { GetTicketsUseCase(get()) }
 
     // viewModel
-    viewModel { TicketViewModel(get()) } // TicketViewModel(getTicketsUseCase = get())
+    viewModel { HomeViewModel(get()) } // TicketViewModel(getTicketsUseCase = get())
 }
