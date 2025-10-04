@@ -75,7 +75,6 @@ private fun Ui(viewModel: HomeViewModel = koinViewModel()) {
 
             ConstraintLayout {
                 val (imgBg,
-                    imgProfile,
                     imgNotification,
                     imgBadgeNotification,
                     txtDate,
@@ -102,26 +101,11 @@ private fun Ui(viewModel: HomeViewModel = koinViewModel()) {
                 )
 
                 Image(
-                    painter = painterResource(R.drawable.ic_user_profile),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(60.dp)
-                        .clip(CircleShape)
-                        .clickable {
-                        }
-                        .constrainAs(imgProfile) {
-                            top.linkTo(parent.top, margin = 16.dp)
-                            start.linkTo(parent.start, margin = 16.dp)
-                        }
-                )
-
-                Image(
                     painter = painterResource(R.drawable.ic_notification),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(45.dp)
                         .clip(CircleShape)
                         .clickable {
                         }
