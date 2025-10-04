@@ -20,6 +20,7 @@ moshiKotlinCodegen = "1.15.0"
 roomRuntime = "2.7.2"
 roomCompiler = "2.7.2"
 roomKtx = "2.7.2"
+threetenabp = "1.4.9"
 ui = "1.8.3"
 uiToolingPreview = "1.8.3"
 uiTooling = "1.8.3"
@@ -45,6 +46,7 @@ moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "mosh
 moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshiKotlinCodegen" }
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
 ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }

@@ -95,4 +95,6 @@ dependencies {
     //viewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    //ThreeTenABP for using LocalDate
+    implementation(libs.threetenabp)
 }
