@@ -48,6 +48,7 @@ import com.aradsheybak.flightticket.R
 import com.aradsheybak.flightticket.ui.components.BaseButton
 import com.aradsheybak.flightticket.ui.components.TicketItem
 import com.aradsheybak.flightticket.ui.components.gradientBackground
+import com.aradsheybak.flightticket.util.getCurrentDate
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -61,6 +62,7 @@ private fun Ui(viewModel: HomeViewModel = koinViewModel()) {
     var from by remember { mutableStateOf("") }
     var to by remember { mutableStateOf("") }
     val tickets by viewModel.tickets.collectAsState()
+    val date = remember { getCurrentDate() }
 
     Box(
         modifier = Modifier
@@ -129,7 +131,7 @@ private fun Ui(viewModel: HomeViewModel = koinViewModel()) {
                 )
 
                 Text(
-                    text = stringResource(R.string.date_in_home),
+                    text = date,
                     color = colorResource(R.color.white),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.W500,
